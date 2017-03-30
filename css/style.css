@@ -1,0 +1,49 @@
+body {
+    background-color: #e9ebee;
+    font-family: Helvetica, Arial;
+}
+
+.posting {
+
+    background-color: #ffffff;
+    border: 1px #dfe0e4 solid;
+}
+.like-container {
+    padding: 10px;
+    color: #58abff;
+}
+
+.posting-container {
+    padding: 10px;
+}
+
+.posting-author {
+    margin-right: 10px;
+    color: #365899;
+}
+
+.posting-content {
+
+}
+
+.comments {
+    background-color: #f6f7f9;
+    padding: 10px;
+}
+
+.comment {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-author {
+    color: #365899;
+}
+
+.comment-content {
+    color: #1d2136;
+}
+
+.comment-input {
+    width: 100%;
+}
