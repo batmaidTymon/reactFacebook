@@ -1,0 +1,27 @@
+{
+  "name": "demo-react",
+  "version": "1.0.0",
+  "description": "foo",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "foo"
+  ],
+  "author": "tymon",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^15.0.20",
+    "@types/react-dom": "^0.14.23",
+    "font-awesome": "^4.7.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.2",
+    "source-map-loader": "^0.2.0",
+    "typescript": "^2.2.2"
+  }
+}
