@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {LikeButton} from "./LikeButton";
 
 export interface FacebookProps {
 }
@@ -23,8 +24,8 @@ export class Facebook extends React.Component<FacebookProps, FacebookState> {
         this.state = {
             comments: [
                 {
-                    author: "hugo",
-                    content: "hello world"
+                    author: "Random Person",
+                    content: "this comment is awesome!"
                 }
             ]
         };
@@ -45,9 +46,8 @@ export class Facebook extends React.Component<FacebookProps, FacebookState> {
                 <div className="posting-author">Tymon</div>
                 <div className="posting-content"> wrote something on facebook!</div>
             </div>
-            <div className="like-container">
-                <i className="fa fa-thumbs-up" aria-hidden="true"></i> <span >Like</span>
-            </div>
+
+            <LikeButton/>
 
             <div className="comments">
 

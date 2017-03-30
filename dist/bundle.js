@@ -90,6 +90,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var LikeButton_1 = __webpack_require__(4);
 var Facebook = (function (_super) {
     __extends(Facebook, _super);
     function Facebook(props, context) {
@@ -97,8 +98,8 @@ var Facebook = (function (_super) {
         _this.state = {
             comments: [
                 {
-                    author: "hugo",
-                    content: "hello world"
+                    author: "Random Person",
+                    content: "this comment is awesome!"
                 }
             ]
         };
@@ -116,10 +117,7 @@ var Facebook = (function (_super) {
             React.createElement("div", { className: "posting-container" },
                 React.createElement("div", { className: "posting-author" }, "Tymon"),
                 React.createElement("div", { className: "posting-content" }, " wrote something on facebook!")),
-            React.createElement("div", { className: "like-container" },
-                React.createElement("i", { className: "fa fa-thumbs-up", "aria-hidden": "true" }),
-                " ",
-                React.createElement("span", null, "Like")),
+            React.createElement(LikeButton_1.LikeButton, null),
             React.createElement("div", { className: "comments" },
                 this.renderComments(),
                 React.createElement("div", { className: "comment-new" },
@@ -157,7 +155,55 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(2);
 var Facebook_1 = __webpack_require__(1);
-ReactDOM.render(React.createElement(Facebook_1.Facebook, { compiler: "asfdasd", framework: "React" }), document.getElementById("example"));
+ReactDOM.render(React.createElement(Facebook_1.Facebook, null), document.getElementById("example"));
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var LikeButton = (function (_super) {
+    __extends(LikeButton, _super);
+    function LikeButton(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.state = {
+            likeCount: 0,
+            displayText: "Like",
+        };
+        return _this;
+    }
+    LikeButton.prototype.render = function () {
+        return React.createElement("div", { className: "like-container" },
+            React.createElement("a", { onClick: this.handleClicked.bind(this) },
+                React.createElement("i", { className: "fa fa-thumbs-up", "aria-hidden": "true" }),
+                React.createElement("span", null, this.state.displayText)));
+    };
+    LikeButton.prototype.handleClicked = function (e) {
+        e.preventDefault();
+        var likeCount = this.state.likeCount + 1;
+        var text = likeCount > 0 ? likeCount + " likes" : "";
+        this.setState({
+            likeCount: likeCount,
+            displayText: text
+        });
+    };
+    return LikeButton;
+}(React.Component));
+exports.LikeButton = LikeButton;
 
 
 /***/ })
