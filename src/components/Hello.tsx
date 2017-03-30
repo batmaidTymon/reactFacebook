@@ -6,7 +6,7 @@ export interface HelloProps {
 }
 
 
-// 'HelloProps' describes the shape of props.
+// 'FacebookProps' describes the shape of props.
 // State is never set so we use the 'undefined' type.
 export class Hello extends React.Component<HelloProps, undefined> {
     render() {

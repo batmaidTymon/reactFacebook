@@ -90,24 +90,55 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the 'undefined' type.
-var Hello = (function (_super) {
-    __extends(Hello, _super);
-    function Hello() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var Facebook = (function (_super) {
+    __extends(Facebook, _super);
+    function Facebook(props, context) {
+        var _this = _super.call(this, props, context) || this;
+        _this.state = {
+            comments: [
+                {
+                    author: "hugo",
+                    content: "hello world"
+                }
+            ]
+        };
+        return _this;
     }
-    Hello.prototype.render = function () {
-        return React.createElement("h1", null,
-            "Hello dudes! ",
-            this.props.compiler,
-            " and ",
-            this.props.framework,
-            "!");
+    Facebook.prototype.renderComments = function () {
+        return this.state.comments.map(function (comment) {
+            return React.createElement("div", { className: "comment" },
+                React.createElement("div", { className: "comment-author" }, comment.author),
+                React.createElement("div", { className: "comment-content" }, comment.content));
+        });
     };
-    return Hello;
+    Facebook.prototype.render = function () {
+        return React.createElement("div", { className: "posting" },
+            React.createElement("div", { className: "posting-container" },
+                React.createElement("div", { className: "posting-author" }, "Tymon"),
+                React.createElement("div", { className: "posting-content" }, " wrote something on facebook!")),
+            React.createElement("div", { className: "like-container" },
+                React.createElement("i", { className: "fa fa-thumbs-up", "aria-hidden": "true" }),
+                " ",
+                React.createElement("span", null, "Like")),
+            React.createElement("div", { className: "comments" },
+                this.renderComments(),
+                React.createElement("div", { className: "comment-new" },
+                    React.createElement("form", { onSubmit: this.handleFormSubmitted.bind(this) },
+                        React.createElement("input", { type: "text", className: "comment-input", placeholder: "write a comment", ref: "commentInput" })))));
+    };
+    Facebook.prototype.handleFormSubmitted = function (e) {
+        e.preventDefault();
+        var comment = {
+            author: "Tymon",
+            content: this.refs.commentInput.value
+        };
+        this.state.comments.push(comment);
+        this.setState(this.state);
+        this.refs.commentInput.value = "";
+    };
+    return Facebook;
 }(React.Component));
-exports.Hello = Hello;
+exports.Facebook = Facebook;
 
 
 /***/ }),
@@ -125,8 +156,8 @@ module.exports = ReactDOM;
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var ReactDOM = __webpack_require__(2);
-var Hello_1 = __webpack_require__(1);
-ReactDOM.render(React.createElement(Hello_1.Hello, { compiler: "asfdasd", framework: "React" }), document.getElementById("example"));
+var Facebook_1 = __webpack_require__(1);
+ReactDOM.render(React.createElement(Facebook_1.Facebook, { compiler: "asfdasd", framework: "React" }), document.getElementById("example"));
 
 
 /***/ })

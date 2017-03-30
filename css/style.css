@@ -37,10 +37,13 @@ body {
 }
 
 .comment-author {
+    display: inline-block;
+    margin-right: 10px;
     color: #365899;
 }
 
 .comment-content {
+    display: inline-block;
     color: #1d2136;
 }
 
